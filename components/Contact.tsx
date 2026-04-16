@@ -6,13 +6,15 @@ import { useState } from 'react'
 
 export default function Contact() {
   const [sent, setSent] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   return (
     <section
       id="contact"
       className="relative py-40 px-6 max-w-xl mx-auto text-center overflow-hidden"
     >
-      {/* ✨ Ambient Orbs */}
+      {/* Ambient Orbs */}
       <div className="absolute -top-24 -left-24 w-72 h-72 bg-violet-600/20 rounded-full blur-3xl animate-pulse" />
       <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-indigo-600/20 rounded-full blur-3xl animate-pulse delay-1000" />
 
@@ -28,7 +30,7 @@ export default function Contact() {
       </motion.h2>
 
       <p className="text-gray-400 mb-12 max-w-md mx-auto">
-        Have an idea, a project, or just want to say hi?  
+        Have an idea, a project, or just want to say hi?
         I’m always open to meaningful conversations.
       </p>
 
@@ -36,22 +38,36 @@ export default function Contact() {
       <motion.form
         onSubmit={async (e) => {
           e.preventDefault()
+          setLoading(true)
+          setError('')
 
           const form = e.currentTarget
           const formData = new FormData(form)
+
           const email = String(formData.get('email') || '')
           const message = String(formData.get('message') || '')
+          const company = String(formData.get('company') || '')
 
-          const res = await fetch('/api/contact', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, message }),
-          })
+          try {
+            const res = await fetch('/api/contact', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email, message, company }),
+            })
 
-          if (res.ok) setSent(true)
+            if (res.ok) {
+              setSent(true)
+              form.reset()
+            } else {
+              setError('Something went wrong. Please try again.')
+            }
+          } catch (err) {
+            console.error(err)
+            setError('Something went wrong. Please try again.')
+          } finally {
+            setLoading(false)
+          }
         }}
-
-
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
@@ -68,35 +84,45 @@ export default function Contact() {
               className="space-y-6"
             >
               <input
+                type="email"
                 name="email"
                 required
-                placeholder="Email"
-                className="w-full bg-transparent border-b border-white/20 p-3
-                           focus:outline-none focus:border-violet-400
-                           transition"
+                placeholder="Your email"
+                className="w-full bg-transparent border-b border-white/20 p-3 focus:outline-none focus:border-violet-400 transition"
+              />
+
+              <input
+                type="text"
+                name="company"
+                className="hidden"
+                tabIndex={-1}
+                autoComplete="off"
               />
 
               <textarea
                 name="message"
                 required
-                placeholder="Message"
+                placeholder="Your message"
                 rows={4}
-                className="w-full bg-transparent border-b border-white/20 p-3
-                           focus:outline-none focus:border-violet-400
-                           transition resize-none"
+                className="w-full bg-transparent border-b border-white/20 p-3 focus:outline-none focus:border-violet-400 transition resize-none"
               />
 
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.97 }}
-                className="group mt-6 w-full flex items-center justify-center gap-2
-                           px-6 py-4 rounded-xl
-                           bg-gradient-to-r from-indigo-500 to-violet-500
-                           font-medium"
+                type="submit"
+                whileHover={!loading ? { scale: 1.05 } : {}}
+                whileTap={!loading ? { scale: 0.97 } : {}}
+                disabled={loading}
+                className="group mt-6 w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Send Message
-                <Send size={18} className="group-hover:translate-x-1 transition" />
+                {loading ? 'Sending...' : 'Send Message'}
+                {!loading && (
+                  <Send size={18} className="group-hover:translate-x-1 transition" />
+                )}
               </motion.button>
+
+              {error && (
+                <p className="text-sm text-red-400">{error}</p>
+              )}
             </motion.div>
           ) : (
             <motion.div
@@ -109,9 +135,7 @@ export default function Contact() {
                 initial={{ rotate: -20 }}
                 animate={{ rotate: 0 }}
                 transition={{ type: 'spring' }}
-                className="w-16 h-16 rounded-full
-                           bg-gradient-to-br from-violet-500 to-indigo-500
-                           flex items-center justify-center"
+                className="w-16 h-16 rounded-full bg-gradient-to-br from-violet-500 to-indigo-500 flex items-center justify-center"
               >
                 <Sparkles />
               </motion.div>

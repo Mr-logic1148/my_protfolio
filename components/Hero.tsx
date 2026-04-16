@@ -29,10 +29,15 @@ export default function Hero() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 {/* LEFT: Text */}
                 <div className="text-center md:text-left">
+                  <p className="text-indigo-400 text-lg font-medium mb-3 tracking-widest uppercase">
+                    Hey, I'm
+                  </p>
                   <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-indigo-400 via-violet-400 to-purple-500 bg-clip-text text-transparent animate-glow">
-                    Full-Stack Developer
+                    Mehraj Gaud
                   </h1>
-
+                  <p className="mt-3 text-2xl text-gray-300 font-medium">
+                    Full-Stack Developer
+                  </p>
                   <p className="mt-6 text-gray-400 max-w-xl mx-auto md:mx-0 text-lg">
                     I design and build high-end, scalable web experiences with modern technologies.
                   </p>
