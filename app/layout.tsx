@@ -1,13 +1,7 @@
-import BackgroundEffects from '@/components/BackGroundEffects'
-import CursorSpotlight from '@/components/CursorSpotlight'
 import FloatingSocials from '@/components/FloatingSocials'
+import MorphicCrystalBackground from '@/components/MorphicCrystalBackground'
 import Navbar from '@/components/Navbar'
 import './globals.css'
-
-export const metadata = {
-  title: 'Mehraj Gaud – Portfolio',
-  description: 'Full-Stack Developer & UI/UX Designer',
-}
 
 export default function RootLayout({
   children,
@@ -15,13 +9,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="dark">
-      <body>
-        <Navbar />
-        <BackgroundEffects />
-        <CursorSpotlight />
-        <FloatingSocials />
-        {children}
+    <html lang="en">
+      <body className="relative isolate">
+        <MorphicCrystalBackground />
+        <div className="relative z-10">
+          <Navbar />
+          <FloatingSocials />
+          {children}
+        </div>
       </body>
     </html>
   )

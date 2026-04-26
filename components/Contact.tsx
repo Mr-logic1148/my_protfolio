@@ -24,12 +24,12 @@ export default function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="text-4xl font-semibold mb-6"
+        className="text-4xl font-semibold mb-6 text-main"
       >
         Let’s Build Something ✨
       </motion.h2>
 
-      <p className="text-gray-400 mb-12 max-w-md mx-auto">
+      <p className="mb-12 max-w-md mx-auto text-muted">
         Have an idea, a project, or just want to say hi?
         I’m always open to meaningful conversations.
       </p>
@@ -88,7 +88,7 @@ export default function Contact() {
                 name="email"
                 required
                 placeholder="Your email"
-                className="w-full bg-transparent border-b border-white/20 p-3 focus:outline-none focus:border-violet-400 transition"
+                className="w-full bg-transparent border-b border-white/20 p-3 text-main focus:outline-none focus:border-violet-400 transition"
               />
 
               <input
@@ -104,7 +104,7 @@ export default function Contact() {
                 required
                 placeholder="Your message"
                 rows={4}
-                className="w-full bg-transparent border-b border-white/20 p-3 focus:outline-none focus:border-violet-400 transition resize-none"
+                className="w-full bg-transparent border-b border-white/20 p-3 text-main focus:outline-none focus:border-violet-400 transition resize-none"
               />
 
               <motion.button
@@ -112,7 +112,7 @@ export default function Contact() {
                 whileHover={!loading ? { scale: 1.05 } : {}}
                 whileTap={!loading ? { scale: 0.97 } : {}}
                 disabled={loading}
-                className="group mt-6 w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                className="contact-submit-glow group mt-6 w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 font-medium text-white disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? 'Sending...' : 'Send Message'}
                 {!loading && (
@@ -135,7 +135,7 @@ export default function Contact() {
                 initial={{ rotate: -20 }}
                 animate={{ rotate: 0 }}
                 transition={{ type: 'spring' }}
-                className="w-16 h-16 rounded-full bg-gradient-to-br from-violet-500 to-indigo-500 flex items-center justify-center"
+                className="w-16 h-16 rounded-full bg-gradient-to-br from-violet-500 to-indigo-500 flex items-center justify-center text-white"
               >
                 <Sparkles />
               </motion.div>
@@ -144,7 +144,7 @@ export default function Contact() {
                 Message sent successfully!
               </p>
 
-              <p className="text-gray-400 text-sm">
+              <p className="text-sm text-muted">
                 I’ll get back to you as soon as possible 🚀
               </p>
             </motion.div>
