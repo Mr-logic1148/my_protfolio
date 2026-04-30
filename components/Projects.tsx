@@ -130,7 +130,7 @@ export default function Projects() {
             whileHover={{ y: -8, rotateX: 2, rotateY: -2, scale: 1.01 }}
             transition={{ duration: 0.5, delay: index * 0.12 }}
             viewport={{ once: true }}
-            className="group relative flex min-h-[420px] flex-col overflow-hidden rounded-[28px] border border-white/10 bg-[#0b0b18]/75 p-8 backdrop-blur-xl shadow-[0_10px_50px_rgba(0,0,0,0.3)] transition-all duration-300"
+            className="group relative flex min-h-[420px] flex-col overflow-hidden rounded-[28px] border border-white/10 card-surface p-8 backdrop-blur-xl shadow-[0_10px_50px_rgba(0,0,0,0.3)] transition-all duration-300"
           >
             <div className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${project.accent}`} />
             <div className="absolute -right-20 -top-20 h-44 w-44 rounded-full bg-indigo-500/10 opacity-60 blur-3xl transition-opacity group-hover:opacity-100" />
