@@ -87,7 +87,7 @@ export default function Timeline() {
 
         <h2 className="mt-6 text-3xl font-semibold text-main md:text-5xl">
           Experience that shows impact,
-          <span className="block bg-gradient-to-r from-indigo-300 via-violet-300 to-fuchsia-300 bg-clip-text text-transparent">
+          <span className="pb-3 block bg-gradient-to-r from-indigo-300 via-violet-300 to-fuchsia-300 bg-clip-text text-transparent">
             not just job titles
           </span>
         </h2>
