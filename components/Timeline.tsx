@@ -63,7 +63,7 @@ export default function Timeline() {
     <section
       ref={sectionRef}
       id="experience"
-      className="relative max-w-7xl mx-auto px-6 py-32"
+      className="relative max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-32"
     >
       {/* Ambient section glow */}
       <div className="pointer-events-none absolute inset-0 -z-10">
@@ -78,7 +78,7 @@ export default function Timeline() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="mx-auto mb-20 max-w-3xl text-center"
+        className="mx-auto mb-12 md:mb-20 max-w-3xl text-center"
       >
         <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-indigo-300 backdrop-blur-md shadow-[0_0_25px_rgba(99,102,241,0.14)]">
           <Sparkles size={16} />
@@ -87,7 +87,7 @@ export default function Timeline() {
 
         <h2 className="mt-6 text-3xl font-semibold text-main md:text-5xl">
           Experience that shows impact,
-          <span className="block pb-3 bg-gradient-to-r from-indigo-300 via-violet-300 to-fuchsia-300 bg-clip-text text-transparent">
+          <span className="block bg-gradient-to-r from-indigo-300 via-violet-300 to-fuchsia-300 bg-clip-text text-transparent">
             not just job titles
           </span>
         </h2>
@@ -164,31 +164,31 @@ function ExperienceCard({ item }: { item: ExperienceItem }) {
     <motion.div
       whileHover={{ y: -6, scale: 1.01 }}
       transition={{ duration: 0.25 }}
-      className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 p-7 backdrop-blur-xl shadow-[0_8px_40px_rgba(0,0,0,0.22)]"
+      className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 p-5 sm:p-7 backdrop-blur-xl shadow-[0_8px_40px_rgba(0,0,0,0.22)]"
     >
       <div className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${item.accent}`} />
       <div className="absolute -right-16 -top-20 h-40 w-40 rounded-full bg-violet-500/10 opacity-70 blur-3xl transition-opacity group-hover:opacity-100" />
       <div className="absolute -bottom-24 -left-12 h-40 w-40 rounded-full bg-indigo-500/10 opacity-60 blur-3xl transition-opacity group-hover:opacity-90" />
 
       <div className="relative z-10">
-        <div className="mb-4 flex flex-wrap items-center gap-3">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/20 px-3 py-1.5 text-sm text-indigo-200">
-            <Briefcase size={14} />
+        <div className="mb-4 flex flex-wrap items-start gap-2">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-black/20 px-2.5 py-1 text-xs sm:text-sm text-indigo-200">
+            <Briefcase size={12} />
             {item.role}
           </span>
 
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm text-muted">
-            <Building2 size={14} />
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs sm:text-sm text-muted">
+            <Building2 size={12} />
             {item.company}
           </span>
 
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm text-muted">
-            <CalendarDays size={14} />
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs sm:text-sm text-muted">
+            <CalendarDays size={12} />
             {item.period}
           </span>
         </div>
 
-        <h3 className="text-2xl font-semibold leading-normal text-main">
+        <h3 className="text-lg sm:text-2xl font-semibold leading-normal text-main">
           {item.role}
         </h3>
 
